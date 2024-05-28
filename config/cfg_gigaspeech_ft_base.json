@@ -1,15 +1,15 @@
 {
     "seed": 42,
     "train_mode": true,
-    "model_name": "openai/whisper-large-v2",
-    "model_force_lang": "english",
+    "model_name": "openai/whisper-tiny",
+    "model_force_lang": "korean",
 
-    "dataset_name": "gigaspeech",
-    "dataset_path": "data/speechcolab/gigaspeech/m",
+    "dataset_name": "dict01",
+    "dataset_path": "data/save_data/audiofolder/dict01",
     "train_with_prompts": true,
     "valid_with_prompts": true,
     "test_with_prompts": true,
-    "train_prompt_info": ["[ domain: tag1, tag2, tag3]"],
+    "train_prompt_info": "/workspace/prompt-whisper/data/train_sitec_parsed_1.csv",
     "valid_prompt_info": ["[ domain: tag1, tag2, tag3]"],
     "test_prompt_info": ["[ domain: tag1, tag2, tag3]"],
 
