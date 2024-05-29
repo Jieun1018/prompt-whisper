@@ -94,6 +94,9 @@ def _get_prompts(samples,
             if "domain" in samples:
                 domains = np.array([samples["domain"][i]]).reshape(-1)
             elif pinfo:
+                #print('pinfo', pinfo)
+                #print('samples', samples)
+                #print(samples.keys())
                 audio_id = samples["audio_id"][i]
                 domains = pinfo[audio_id] 
             else:
@@ -145,6 +148,9 @@ def transform_for_prediction(samples,
     batch_size = len(samples["text"])
     # Handle labels and prompts
     if use_prompts:
+        #print(pinfo)
+        #print(samples)
+        #print(samples.keys())
         prompts = _get_prompts(samples, pinfo, use_random_selection)
     else:
         prompts = [''] * batch_size

@@ -82,8 +82,12 @@ def setup_dataset(dataset_name,
                   num_subsamples: int = -1,
                   cache_file_name="~/.cache/clairaudience/dataset.cache", **kwargs) -> DatasetDict:
     dataset = load_from_disk(dataset_path)
+    print(dataset)
+    print(dataset_name)
 
     dataset_pre_func = lambda x: default_prepare_dataset(x, feature_extractor, tokenizer)
+
+    #splits = ["train", "validation", "test"]
     splits = ["train", "test"]
     
     if dataset_name in {"common_voice_5_1", "common_voice_9_0"}:
@@ -139,7 +143,9 @@ def setup_dataset(dataset_name,
         splits = ["test"]
         dataset = DatasetDict(dict(test=dataset))
     elif dataset_name == 'dict01':
-        dataset = dataset.select_columns(['audio', 'text'])
+        dataset = dataset.select_columns(['audio', 'text', 'audio_id'])
+        dataset_pre_func = None
+        splits = ["train", "validation", "test"]
     else:
         raise NotImplementedError(f"dataset name: {dataset_name} not recognizable.")
     
@@ -156,7 +162,7 @@ def setup_dataset(dataset_name,
                                       kwargs["num_valid_subsamples"],
                                       kwargs["num_test_subsamples"])
     if dataset_pre_func:
-        dataset = dataset.map(dataset_pre_func, num_proc=8, cache_file_names=cache_file_names)
+        dataset = dataset.map(dataset_pre_func, num_proc=1, cache_file_names=cache_file_names)
 
     return dataset
 

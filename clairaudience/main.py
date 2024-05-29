@@ -104,7 +104,9 @@ def run(cfg):
     else:
         # Use set transform to create prompts on the fly
         train_dataset = dataset['train']
+        print(train_dataset)
         valid_dataset = dataset['validation']
+        print(valid_dataset)
         # NOTE: validation transform is the same as train transform
         train_dataset.set_transform(get_transform(cfg, tokenizer, "train"))
         valid_dataset.set_transform(get_transform(cfg, tokenizer, "validation"))

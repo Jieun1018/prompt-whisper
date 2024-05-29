@@ -2,8 +2,8 @@ import os
 import shutil
 
 # 텍스트 파일 경로 및 지정 경로
-source_list_path = 'new_path.txt'  # 파일 경로가 적힌 텍스트 파일
-destination_dir = '/DB/DB_single_ch/train'  # 파일을 옮길 목적지 디렉토리
+source_list_path = '/DB/DB_single_ch/validation/validation_file_destination.txt'  # 파일 경로가 적힌 텍스트 파일
+destination_dir = '/DB/DB_single_ch/validation'  # 파일을 옮길 목적지 디렉토리
 
 # 목적지 디렉토리가 존재하지 않으면 생성
 if not os.path.exists(destination_dir):
